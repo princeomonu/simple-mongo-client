@@ -1,6 +1,5 @@
 const {MongoClient} = require('mongodb');
-
-const MONGO_URL = (process.env.MONGO_URL||"mongodb://localhost/default")+"?replicaSet=rs0"
+const MONGO_URL = (process.env.MONGO_URL||"mongodb://localhost/default")
 
 
 module.exports = async (database)=>{
