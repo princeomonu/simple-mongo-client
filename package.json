@@ -13,5 +13,9 @@
   },
   "scripts": {
     "test": "jest"
+  },
+  "repository": "git://github.com/princeomonu/simple-mongo-driver.git",
+  "publishConfig": {
+    "registry":"https://npm.pkg.github.com"
   }
 }

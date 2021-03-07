@@ -3,8 +3,6 @@ const { ObjectID } = require('mongodb')
 const jsonfile = require('jsonfile')
 
 const Database = {
-    config: null,
-    db: null,
     connect: async function (coll){
         try{
             console.log('configuring..')
