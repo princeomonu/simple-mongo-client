@@ -4,8 +4,7 @@ const jsonfile = require('jsonfile')
 
 module.exports  = {
     connect: async function (coll){
-        try{
-            console.log('configuring..')
+        try{            
             this.db = jsonfile.readFileSync('package.json').name
             this.config = await config(this.db)
             return new Db(this.config,coll)
