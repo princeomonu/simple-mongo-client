@@ -2,7 +2,7 @@ const config = require('./dbConfig')
 const { ObjectID } = require('mongodb')
 const jsonfile = require('jsonfile')
 
-const Database = {
+module.exports  = {
     connect: async function (coll){
         try{
             console.log('configuring..')
@@ -13,12 +13,7 @@ const Database = {
             console.log(err)
             throw 'couldn not parse json file'
         }
-    },
-    deleteDatabase: async function(){
-       if(!config) throw 'no database selected'
-       const res = this.config.collection(this.db).drop()
-       return {success: res?true:false}
-    },
+    }
 }
 
 
@@ -103,9 +98,14 @@ class Db {
                 })
         });
     }
+
+
+    async drop(){
+        const res = await this.#collection.drop()
+        return {success: res?true:false}
+    }
  
 
 
 }
 
-module.exports = Database
