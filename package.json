@@ -1,6 +1,6 @@
 {
   "name": "simple-mongo-client",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "index.js",
   "license": "MIT",
   "description": "Shemaless, Promise based mongoDB driver, Just connect to a collection and use!",

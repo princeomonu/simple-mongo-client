@@ -11,7 +11,7 @@ Database name is automatically generated from your application name in package.j
 > connect to a collection (create if doesn't exist)
 ### sample code
 ```javascript
-  const Db = require('simple-mongo-driver')
+  const Db = require('simple-mongo-client')
   const userDB = await Db.connect('Users')
 ```
 
@@ -86,7 +86,7 @@ Database name is automatically generated from your application name in package.j
   {
     success: true,
     data:{
-      name:'Prince'
+      name:'Prince',
       location:'Abuja, Nigeria'
     }
   }
