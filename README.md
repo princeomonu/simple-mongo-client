@@ -2,7 +2,7 @@
 Shemaless, Promise based mongoDB driver, **Just connect to a collection and use!**
 
 ## Installation
-`` npm install https://github.com/princeomonu/simple-mongo-driver.git ``
+`` npm install simple-mongo-client ``
 
 ## Database Name
 Database name is automatically generated from your application name in package.json file
@@ -10,7 +10,7 @@ Database name is automatically generated from your application name in package.j
 ## Connect To Collection
 > connect to a collection (create if doesn't exist)
 ### sample code
-```
+```javascript
   const Db = require('simple-mongo-driver')
   const userDB = await Db.connect('Users')
 ```
@@ -19,11 +19,11 @@ Database name is automatically generated from your application name in package.j
 > save one documents
 
 ### parameters
-```
+```typescript
     - data: Object
 ```
 ### sample code
-```
+```javascript
   const res = await userDb.save({
     name:'Prince',
     location:'Abuja, Nigeria'
@@ -31,7 +31,7 @@ Database name is automatically generated from your application name in package.j
 
 ```
 ### sample response
-```
+```javascript
   {
     success: true,
     _id:'asdjflekll'
@@ -42,11 +42,11 @@ Database name is automatically generated from your application name in package.j
 ## Save Many
 > save many documents
 ### parameters
-```
+```typescript
 - data: Array<Object>
 ```
 ### sample code
-```
+```javascript
   const res = await userDb.saveMany([
     {
       name:'Prince',
@@ -62,7 +62,7 @@ Database name is automatically generated from your application name in package.j
 
 ```
 ### sample response
-```
+```javascript
 {
   success: true,
   _ids:['ksjdlfsjlajkf','kljsljdfsdlkf']
@@ -74,15 +74,15 @@ Database name is automatically generated from your application name in package.j
 > get one document
 
 ### parameters
-```
+```typescript
   - searchQuery: Object
 ```
 ### sample code
-```
+```javascript
   const res = await userDb.getOne({name:'Prince'})
 ```
 ### sample response
-```
+```javascript
   {
     success: true,
     data:{
@@ -96,15 +96,15 @@ Database name is automatically generated from your application name in package.j
 ## Search
 > search for documents
 ### parameters
-```
+```typescript
 - searchQuery: Object
 ```
 ### sample code
-```
+```javascript
   const res = await userDb.search({gender:'male'})
 ```
 ### sample response
-```
+```javascript
   {
     success: true,
     data:[
@@ -125,11 +125,11 @@ Database name is automatically generated from your application name in package.j
 ## Get All
 > get all documents
 ### sample code
-```
+```javascript
   const res = await userDb.getAll()
 ```
 ### sample response
-```
+```javascript
   {
     success: true,
     data:[
@@ -150,52 +150,52 @@ Database name is automatically generated from your application name in package.j
 ## Update
 > update a document
 ### parameters
-```
+```typescript
 - searchQuery: Object
 - data: Object
 ```
 ### sample code
-```
+```javascript
   const res = await userDb.update({name:'Prince'},{location:'Lagos,Nigeria'})
 ```
 ### sample response
-```
+```javascript
   {success: true}
 ```
 
 ## Delete
 > delete a document 
 ### parameters
-```
+```typescript
 - searchQuery: Object
 ```
 ### sample code
-```
+```javascript
   const res = await userDb.delete({name:'Prince'})
 ```
 ### sample response
-```
+```javascript
   {success: true}
 ```
 
 ## Delete All
 > deletes all documents
 ### sample code
-```
+```javascript
   const res = await userDb.deleteAll()
 ```
 ### sample response
-```
+```javascript
   {success: true}
 ```
 
 ## Drop
 > delete the collection
 ### sample code
-```
+```javascript
   const res = await userDb.deleteAll()
 ```
 ### sample response
-```
+```javascript
   {success: true}
 ```
