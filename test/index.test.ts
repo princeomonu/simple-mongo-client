@@ -1,16 +1,16 @@
-const Database = require('./index')
+import { ObjectId } from 'mongodb';
+import Db,{Database} from '../src/index'
 
 describe(':Database',()=>{
 
     // jest.setTimeout(30000)
     
     const mockCollection = 'users'
-    let userDb;
-    let id;
+    let userDb:Database;
+    let id: ObjectId;
 
     beforeAll(async()=>{
-        userDb = await Database.connect(mockCollection)
-
+        userDb = await Db.connect(mockCollection,{mongoURL:'mongodb://localhost:27018'})
     })
     
     const mockUser = {
@@ -35,10 +35,17 @@ describe(':Database',()=>{
         }
     ]
     
-    // //watch collection (insert)
-    // userDb.watch('insert',(response)=>{
-    //     expect(response).toBe({success:true})
-    // });
+    /**
+     * TODO: listen test
+     */
+    // it('should listen for insert',(done)=>{
+    //     //watch collection (insert)
+    //     userDb.watch('insert',(response)=>{
+    //         expect(response).toBe({success:true})
+    //         done()
+    //     });
+    // })
+    
     it('should save one item to db', async () => {
         
         //save data to collection
@@ -69,8 +76,8 @@ describe(':Database',()=>{
     it('should get all items from db', async () => {
         
         //get all data from collection
-        const response3 = (await userDb.getAll()).data[0]    
-        expect(response3.name).toBe(mockUser.name);
+        const response3 = (await userDb.getAll()).data    
+        expect(response3.every(d=>manyMock.map(m=>m.name).includes(d.name))).toBe(true);
     });
     
     it('should update one item in db', async () => {

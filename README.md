@@ -10,7 +10,7 @@ Database name is automatically generated from your application name in package.j
 ## Connect To Collection
 > connect to a collection (create if doesn't exist)
 ### sample code
-```javascript
+```typescript
   const Db = require('simple-mongo-client')
   const userDB = await Db.connect('Users')
 ```
@@ -23,7 +23,7 @@ Database name is automatically generated from your application name in package.j
     - data: Object
 ```
 ### sample code
-```javascript
+```typescript
   const res = await userDb.save({
     name:'Prince',
     location:'Abuja, Nigeria'
@@ -31,7 +31,7 @@ Database name is automatically generated from your application name in package.j
 
 ```
 ### sample response
-```javascript
+```typescript
   {
     success: true,
     _id:'asdjflekll'
@@ -46,7 +46,7 @@ Database name is automatically generated from your application name in package.j
 - data: Array<Object>
 ```
 ### sample code
-```javascript
+```typescript
   const res = await userDb.saveMany([
     {
       name:'Prince',
@@ -62,7 +62,7 @@ Database name is automatically generated from your application name in package.j
 
 ```
 ### sample response
-```javascript
+```typescript
 {
   success: true,
   _ids:['ksjdlfsjlajkf','kljsljdfsdlkf']
@@ -78,11 +78,11 @@ Database name is automatically generated from your application name in package.j
   - searchQuery: Object
 ```
 ### sample code
-```javascript
+```typescript
   const res = await userDb.getOne({name:'Prince'})
 ```
 ### sample response
-```javascript
+```typescript
   {
     success: true,
     data:{
@@ -100,11 +100,11 @@ Database name is automatically generated from your application name in package.j
 - searchQuery: Object
 ```
 ### sample code
-```javascript
+```typescript
   const res = await userDb.search({gender:'male'})
 ```
 ### sample response
-```javascript
+```typescript
   {
     success: true,
     data:[
@@ -125,11 +125,11 @@ Database name is automatically generated from your application name in package.j
 ## Get All
 > get all documents
 ### sample code
-```javascript
+```typescript
   const res = await userDb.getAll()
 ```
 ### sample response
-```javascript
+```typescript
   {
     success: true,
     data:[
@@ -155,11 +155,11 @@ Database name is automatically generated from your application name in package.j
 - data: Object
 ```
 ### sample code
-```javascript
+```typescript
   const res = await userDb.update({name:'Prince'},{location:'Lagos,Nigeria'})
 ```
 ### sample response
-```javascript
+```typescript
   {success: true}
 ```
 
@@ -170,32 +170,54 @@ Database name is automatically generated from your application name in package.j
 - searchQuery: Object
 ```
 ### sample code
-```javascript
+```typescript
   const res = await userDb.delete({name:'Prince'})
 ```
 ### sample response
-```javascript
+```typescript
   {success: true}
 ```
 
 ## Delete All
 > deletes all documents
 ### sample code
-```javascript
+```typescript
   const res = await userDb.deleteAll()
 ```
 ### sample response
-```javascript
+```typescript
   {success: true}
 ```
 
 ## Drop
 > delete the collection
 ### sample code
-```javascript
+```typescript
   const res = await userDb.deleteAll()
 ```
 ### sample response
-```javascript
+```typescript
   {success: true}
+```
+
+## Disconnect
+> disconnect from database
+### sample code
+```typescript
+  await userDb.disconnect()
+```
+### sample response
+```typescript
+  {success: true}
+```
+
+## Configuration Options
+> you can also set some connect options
+### sample code
+```typescript
+  const Db = require('simple-mongo-client')
+  const userDB = await Db.connect('Users',{
+    database: 'MyDB', //defaults to package.json name field
+    mongoURL:'mongodb://localhost:27018', //defaults to mongodb://localhost:27017
+  })
 ```
