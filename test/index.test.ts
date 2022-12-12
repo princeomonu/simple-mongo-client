@@ -107,4 +107,8 @@ describe(':Database',()=>{
     });
 
 
+    afterAll(async()=>{
+        await userDb.disconnect()
+    })
+
 })
